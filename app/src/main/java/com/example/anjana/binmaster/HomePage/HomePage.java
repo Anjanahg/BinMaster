@@ -37,6 +37,8 @@ public class HomePage extends AppCompatActivity {
         actionBar.hide();
 
 
+
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         navigationView= (NavigationView) findViewById(R.id.shitstuff);
 
@@ -44,7 +46,7 @@ public class HomePage extends AppCompatActivity {
         ImageView imgvw = (ImageView)hView.findViewById(R.id.imageView);
         TextView tv = (TextView)hView.findViewById(R.id.textView);
         imgvw .setImageResource(0);
-        tv.setText("new text");
+        tv.setText("Anjana");
 
 
         FM= getSupportFragmentManager();

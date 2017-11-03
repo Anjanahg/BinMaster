@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="MyPortfolio"
+    <item android:title="Profile"
         android:id="@+id/nav_item_inbox"
-        android:icon="@drawable/inbox"/>
+        android:icon="@drawable/profile_clipart"/>
 
-    <item android:title="Sent"
+    <item android:title="Points"
         android:id="@+id/nav_item_sent"
-        android:icon="@drawable/sent"/>
+        android:icon="@drawable/points_clipart"/>
 
-    <item android:title="Drafts"
-        android:id="@+id/nav_item_draft"
-        android:icon="@drawable/draft"/>
+
 
 
 
     <item android:title="Others">
         <menu>
             <item
-                android:title="Spam"
-                android:icon="@drawable/spam"/>
+                android:title="Help"
+                android:icon="@drawable/help"/>
             <item
-                android:title="Bin"
-                android:icon="@drawable/bin"/>
+                android:title="About Us"
+                android:icon="@drawable/draft"/>
         </menu>
     </item>
 
     <group android:id="@+id/group_settings_id">
 
-        <item android:title="Settings"
+
+        <item android:title="Logout"
             android:icon="@drawable/settings"/>
-        <item android:title="Help"
-            android:icon="@drawable/help"/>
+
     </group>
 
 
