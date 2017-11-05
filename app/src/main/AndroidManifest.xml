@@ -42,6 +42,8 @@
         </activity>
         <activity android:name=".HomePage.HomePage">
         </activity>
+        <activity android:name=".GridPage">
+        </activity>
     </application>
 
 </manifest>
