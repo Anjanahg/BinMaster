@@ -93,6 +93,23 @@ public class GridPage extends AppCompatActivity implements NumberPicker.OnValueC
         });
 
 
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+        Button btnSend = (Button) findViewById(R.id.btnSendReqest);
+        btnSend.setOnClickListener(new View.OnClickListener()
+        {
+
+            @Override
+            public void onClick(View v) {
+
+
+
+            }
+        });
+
     }
 
 
