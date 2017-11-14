@@ -6,57 +6,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.anjana.binmaster.LoginActivity"
-    android:background="@drawable/background_image">
+    android:background="#FDFDFD">
 
 
     <EditText
         android:id="@+id/txtEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/txtPassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Email"
+        android:layout_marginBottom="33dp"
         android:background="@drawable/textview_shape_ovel"
-        android:drawableLeft="@drawable/user_clipart"/>
+
+        android:drawableLeft="@drawable/user_clipart"
+        android:ems="10"
+        android:fontFamily="serif"
+        android:hint="Email"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/txtPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Password"
-        android:background="@drawable/textview_shape_ovel"
-        android:layout_marginTop="32dp"
-        android:layout_below="@+id/txtEmail"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/btnLogin"
         android:layout_alignLeft="@+id/txtEmail"
         android:layout_alignStart="@+id/txtEmail"
-        android:drawableLeft="@drawable/lock_clipart"/>
+        android:layout_marginBottom="77dp"
+        android:background="@drawable/textview_shape_ovel"
+        android:drawableLeft="@drawable/lock_clipart"
+        android:ems="10"
+        android:fontFamily="serif"
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:text="Sign In"
-        android:layout_below="@+id/txtPassword"
+        android:layout_height="40dp"
+        android:layout_above="@+id/textview"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/button_shape_ovel"/>
+        android:layout_marginBottom="33dp"
+        android:background="@drawable/button_shape_ovel"
+        android:text="Sign In"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/button2"
+    <TextView
+        android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLogin"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp"
-        android:background="@android:color/transparent"
-        android:text="Register here"
-        android:textColor="@android:color/holo_blue_bright"
-        android:onClick="goNext"/>
+        android:layout_marginBottom="63dp"
+        android:text="Not a member? Sign up here."
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        android:onClick="goNext"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>
 

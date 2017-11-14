@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.anjana.binmaster.GridPage">
+    tools:context="com.example.anjana.binmaster.GridPage"
+    android:background="#C8E9FA">
 
 
     <Button
@@ -44,10 +45,10 @@
         android:layout_width="100dp"
         android:layout_height="150dp"
         android:background="@drawable/glass_image"
-        android:layout_marginTop="82dp"
-        android:layout_below="@+id/btnOrganic"
-        android:layout_alignLeft="@+id/btnOrganic"
-        android:layout_alignStart="@+id/btnOrganic" />
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/textViewOrganic"
+        android:layout_alignRight="@+id/textViewOrganic"
+        android:layout_alignEnd="@+id/textViewOrganic" />
 
     <Button
         android:id="@+id/btnMetal"
@@ -133,12 +134,15 @@
     <Button
         android:id="@+id/btnSendReqest"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewMetal"
+        android:layout_height="40dp"
+        android:layout_below="@+id/textViewGlass"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_shape_ovel"
         android:text="Send Request"
-        android:background="@drawable/button_shape_ovel"/>
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:onClick="send"/>
 
 
 </RelativeLayout>

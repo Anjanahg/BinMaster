@@ -34,8 +34,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_place_api" />
 
-        <activity android:name=".LocationPicker">
-        </activity>
         <activity android:name=".MobileNumberValidation">
         </activity>
         <activity android:name=".RegSuccessPage">
@@ -45,6 +43,8 @@
         <activity android:name=".GridPage">
         </activity>
         <activity android:name=".DonatePage">
+        </activity>
+        <activity android:name=".LocationPicker">
         </activity>
     </application>
 

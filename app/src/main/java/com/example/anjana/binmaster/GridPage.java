@@ -2,6 +2,7 @@ package com.example.anjana.binmaster;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,10 +11,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import static android.R.attr.value;
 
 public class GridPage extends AppCompatActivity implements NumberPicker.OnValueChangeListener{
 
     private static TextView tv1,tv2,tv3,tv4,tv5,tv6;
+    CharSequence v1,v2,v3,v4,v5,v6;
     static Dialog d ;
 
     @Override
@@ -28,7 +33,7 @@ public class GridPage extends AppCompatActivity implements NumberPicker.OnValueC
 
             @Override
             public void onClick(View v) {
-                show(tv1);
+                 show(tv1);
             }
         });
 //--------------------------------------------------------------------------------------------------
@@ -104,8 +109,15 @@ public class GridPage extends AppCompatActivity implements NumberPicker.OnValueC
 
             @Override
             public void onClick(View v) {
-
-
+                 v1= tv1.getText();
+                v2= tv2.getText();
+                v3= tv3.getText();
+                v4= tv4.getText();
+                v5= tv5.getText();
+                v6= tv6.getText();
+                Toast.makeText(getApplicationContext(),
+                        "Anjana"+v1+v2+v3+v4+v5+v6, Toast.LENGTH_LONG)
+                        .show();
 
             }
         });
@@ -163,8 +175,11 @@ public class GridPage extends AppCompatActivity implements NumberPicker.OnValueC
         {
             @Override
             public void onClick(View v) {
+                float n1= np1.getValue();
+                int n2=np2.getValue();
+                int n3=np3.getValue();
 
-
+                float value=n3*10+n2+n1/10;
 
 
 
@@ -173,11 +188,6 @@ public class GridPage extends AppCompatActivity implements NumberPicker.OnValueC
                 AlertDialog.Builder builder = new AlertDialog.Builder(GridPage.this);
 
 
-                float n1= np1.getValue();
-                int n2=np2.getValue();
-                int n3=np3.getValue();
-
-                float value=n3*10+n2+n1/10;
                 String val= String.valueOf(value);
 
 

@@ -19,7 +19,7 @@
         android:layout_marginEnd="29dp"
         android:layout_marginRight="29dp"
         android:clickable="true"
-        app:backgroundTint="@android:color/holo_blue_light"
+        app:backgroundTint="#FF0893D8"
         app:fabSize="normal"
         app:srcCompat="@drawable/floating_button_icon" />
 

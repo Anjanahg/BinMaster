@@ -1,6 +1,5 @@
 package com.example.anjana.binmaster;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,21 +19,21 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 
-import static com.example.anjana.binmaster.R.id.txtLocationView;
+import static com.example.anjana.binmaster.R.id.textLocationView;
 
 public class LocationPicker  extends AppCompatActivity {
 
     private TextView get_place;
     int PLACE_PICKER_REQUEST=1;
-    ImageButton mapButton;
+    Button mapButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_picker);
 
-        mapButton=(ImageButton)findViewById(R.id.btn_map_icon);
-        get_place=(TextView)findViewById(R.id.txtLocationView);
+        mapButton=(Button)findViewById(R.id.btnMap);
+        get_place=(TextView)findViewById(R.id.textLocationView);
 
 
         mapButton.setOnClickListener(new View.OnClickListener() {
