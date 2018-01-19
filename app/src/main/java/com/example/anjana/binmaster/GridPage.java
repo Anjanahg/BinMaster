@@ -2,10 +2,9 @@ package com.example.anjana.binmaster;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,13 +12,13 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static android.R.attr.value;
-
 public class GridPage extends AppCompatActivity implements NumberPicker.OnValueChangeListener{
 
     private static TextView tv1,tv2,tv3,tv4,tv5,tv6;
     CharSequence v1,v2,v3,v4,v5,v6;
     static Dialog d ;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

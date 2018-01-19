@@ -9,7 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.anjana.binmaster.DonatePage;
+import com.example.anjana.binmaster.DogFood;
+import com.example.anjana.binmaster.DogFood;
 import com.example.anjana.binmaster.R;
 
 
@@ -41,7 +42,7 @@ public class FoodDonation extends Fragment {
                 // Click action
                 switch (rootView.getId()){
                     case R.id.btnFloating:
-                        getActivity().startActivity(new Intent(getActivity(),DonatePage.class));
+                        getActivity().startActivity(new Intent(getActivity(),DogFood.class));
                         break;
                 }
             }
