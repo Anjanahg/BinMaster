@@ -16,7 +16,7 @@
 
         android:ems="10"
         android:fontFamily="serif"
-        android:hint="   Full Name"
+        android:hint="Full Name"
         android:inputType="textPersonName"
         android:layout_marginBottom="22dp"
         android:layout_above="@+id/txtEmail"
@@ -30,7 +30,7 @@
 
         android:ems="10"
         android:fontFamily="serif"
-        android:hint="   Email"
+        android:hint="Email"
         android:inputType="textPersonName"
         android:layout_marginBottom="20dp"
         android:layout_above="@+id/txtAddress"
@@ -45,7 +45,7 @@
 
         android:ems="10"
         android:fontFamily="serif"
-        android:hint="   Address"
+        android:hint="Address"
         android:inputType="textPersonName"
         android:layout_marginBottom="24dp"
         android:layout_above="@+id/txtMobileNumber"
@@ -60,7 +60,7 @@
 
         android:ems="10"
         android:fontFamily="serif"
-        android:hint="   Mobile Number"
+        android:hint="Mobile Number"
         android:inputType="phone"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/txtAddress"
@@ -74,7 +74,7 @@
 
         android:ems="10"
         android:fontFamily="serif"
-        android:hint="   Password"
+        android:hint="Password"
         android:inputType="textPassword"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/txtMobileNumber"
@@ -89,7 +89,7 @@
 
         android:ems="10"
         android:fontFamily="serif"
-        android:hint="   Re-Enter Password"
+        android:hint="Re-Enter Password"
         android:inputType="textPassword"
         android:layout_marginTop="25dp"
         android:layout_below="@+id/txtPassword"
