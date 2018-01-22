@@ -39,8 +39,8 @@ public class LocationPicker  extends AppCompatActivity {
     private TextView get_place;
     int PLACE_PICKER_REQUEST=1;
     Button mapButton;
-    String Laddress,Lplace,fullname,email,address,mobileno,password;
-    String url = "";
+    String Lplace,fullname,email,address,mobileno,password;
+    String url = "192.168.8.5:8000/api/register";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +80,7 @@ public class LocationPicker  extends AppCompatActivity {
                 Place place=PlacePicker.getPlace(data,this);
                 String location=String.format("Place:%s\n%s",place.getAddress(),place.getLatLng());
                 get_place.setText(location);
-                Laddress = place.getAddress().toString();
+
                 Lplace = place.getLatLng().toString();
 
 
@@ -132,7 +132,6 @@ public class LocationPicker  extends AppCompatActivity {
                 params.put("address",address);
                 params.put("mobileno",mobileno);
                 params.put("password",password);
-                params.put("Laddress",Laddress);
                 params.put("Lplace",Lplace);
 
                 return params;
