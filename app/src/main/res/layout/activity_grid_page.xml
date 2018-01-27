@@ -77,13 +77,13 @@
         android:layout_below="@+id/btnOrganic"
         android:layout_marginTop="15dp"
         android:textSize="18sp"
-        android:text="0.0Kgs"/>
+        android:text="0.0"/>
 
     <TextView
         android:id="@+id/textViewPlastic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0.0Kgs"
+        android:text="0.0"
         android:textSize="18sp"
         android:layout_alignBottom="@+id/textViewOrganic"
         android:layout_alignRight="@+id/btnPlastic"
@@ -96,7 +96,7 @@
         android:layout_alignEnd="@+id/btnPaper"
         android:layout_alignRight="@+id/btnPaper"
         android:layout_alignTop="@+id/textViewPlastic"
-        android:text="0.0Kgs"
+        android:text="0.0"
         android:textSize="18sp" />
 
     <TextView
@@ -107,7 +107,7 @@
         android:layout_alignRight="@+id/btnGlass"
         android:layout_below="@+id/btnGlass"
         android:layout_marginTop="11dp"
-        android:text="0.0Kgs"
+        android:text="0.0"
         android:textSize="18sp" />
 
     <TextView
@@ -118,7 +118,7 @@
         android:layout_alignBottom="@+id/textViewGlass"
         android:layout_alignEnd="@+id/textViewPlastic"
         android:layout_alignRight="@+id/textViewPlastic"
-        android:text="0.0Kgs"
+        android:text="0.0"
         android:textSize="18sp" />
 
     <TextView
@@ -128,7 +128,7 @@
         android:layout_alignBottom="@+id/textViewMetal"
         android:layout_alignEnd="@+id/btnElectronic"
         android:layout_alignRight="@+id/btnElectronic"
-        android:text="0.0Kgs"
+        android:text="0.0"
         android:textSize="18sp" />
 
     <Button

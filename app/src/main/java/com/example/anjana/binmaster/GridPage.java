@@ -2,6 +2,7 @@ package com.example.anjana.binmaster;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,13 +13,26 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.anjana.binmaster.HomePage.HomePage;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class GridPage extends AppCompatActivity implements NumberPicker.OnValueChangeListener{
 
     private static TextView tv1,tv2,tv3,tv4,tv5,tv6;
-    CharSequence v1,v2,v3,v4,v5,v6;
+    String v1,v2,v3,v4,v5,v6;
     static Dialog d ;
-
-
+    String email="Anjana@gmail.com";
+    String url = "http://192.168.8.3:8000/api/sendeRequest";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,15 +122,59 @@ public class GridPage extends AppCompatActivity implements NumberPicker.OnValueC
 
             @Override
             public void onClick(View v) {
-                 v1= tv1.getText();
-                v2= tv2.getText();
-                v3= tv3.getText();
-                v4= tv4.getText();
-                v5= tv5.getText();
-                v6= tv6.getText();
-                Toast.makeText(getApplicationContext(),
-                        "Anjana"+v1+v2+v3+v4+v5+v6, Toast.LENGTH_LONG)
-                        .show();
+                v1= tv1.getText().toString();
+                v2= tv2.getText().toString();
+                v3= tv3.getText().toString();
+                v4= tv4.getText().toString();
+                v5= tv5.getText().toString();
+                v6= tv6.getText().toString();
+
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+
+
+                            JSONObject jsonObject = new JSONObject(response);
+                            if(jsonObject.getBoolean("error")){
+                                Toast.makeText(GridPage.this,jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                            }
+
+                            else{
+                                final Intent i=new Intent(GridPage.this,HomePage.class);
+                                startActivity(i);
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(GridPage.this,error.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                })
+                {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String,String> params = new HashMap<String, String>();
+                        params.put("v1",v1);
+                        params.put("v2",v2);
+                        params.put("v3",v3);
+                        params.put("v4",v4);
+                        params.put("v5",v5);
+                        params.put("v6",v6);
+                        params.put("email",email);
+                        return params;
+                    }
+                };
+
+
+
+                MySingleton.getInstance(GridPage.this).addToRequestQueue(stringRequest);
 
             }
         });

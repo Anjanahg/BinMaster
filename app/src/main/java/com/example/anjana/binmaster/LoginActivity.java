@@ -5,8 +5,24 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.anjana.binmaster.HomePage.HomePage;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
+    String url="http://192.168.8.3:8000/api/login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,16 +35,62 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-    public void goNext(View v){
-        Intent i=new Intent(LoginActivity.this,RegisterActivity.class);
+    public void login(View v){
+        final Intent i=new Intent(LoginActivity.this,HomePage.class);
 
-        startActivity(i);
+        EditText passwordET = (EditText) findViewById(R.id.txtPassword);
+        EditText emailET = (EditText) findViewById(R.id.txtEmail);
+        final String email=emailET.getText().toString();
+        final String password=passwordET.getText().toString();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+
+
+                    JSONObject jsonObject = new JSONObject(response);
+                    if(jsonObject.getBoolean("error")){
+                        Toast.makeText(LoginActivity.this,jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                    }
+
+                    else{
+                        final Intent i=new Intent(LoginActivity.this,HomePage.class);
+                        startActivity(i);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(LoginActivity.this,error.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("email",email);
+                params.put("password",password);
+                return params;
+            }
+        };
+
+
+
+        MySingleton.getInstance(LoginActivity.this).addToRequestQueue(stringRequest);
+
+    }
+
+
+    public  void register(View v){
+        Intent intent =new Intent(LoginActivity.this,RegisterActivity.class);
+        startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+    }
 
-    }
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
-    }
 
 }
