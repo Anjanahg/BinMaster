@@ -31,8 +31,8 @@ public class GridPage extends AppCompatActivity implements NumberPicker.OnValueC
     private static TextView tv1,tv2,tv3,tv4,tv5,tv6;
     String v1,v2,v3,v4,v5,v6;
     static Dialog d ;
-    String email="Anjana@gmail.com";
-    String url = "http://192.168.8.3:8000/api/sendeRequest";
+    String uId="18";
+    String url = "http://192.168.8.104:8000/api/send";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,7 +167,7 @@ public class GridPage extends AppCompatActivity implements NumberPicker.OnValueC
                         params.put("v4",v4);
                         params.put("v5",v5);
                         params.put("v6",v6);
-                        params.put("email",email);
+                        params.put("uId",uId);
                         return params;
                     }
                 };
@@ -266,7 +266,7 @@ public class GridPage extends AppCompatActivity implements NumberPicker.OnValueC
                         float value=n3*10+n2+n1/10;
                         String val= String.valueOf(value);
 
-                        tv.setText(val+"Kgs");
+                        tv.setText(val);
                         d.dismiss();
 
                         dialog.dismiss();

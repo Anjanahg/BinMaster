@@ -1,6 +1,8 @@
 package com.example.anjana.binmaster;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,12 +24,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    String url="http://192.168.8.3:8000/api/login";
-
+    String url="http://192.168.8.104:8000/api/login";
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
+    Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        prefs=getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        editor=prefs.edit();
+
+        if(prefs.getBoolean("isLoggedIn",false)){
+            i=new Intent(LoginActivity.this,HomePage.class);
+            Toast.makeText(LoginActivity.this,"Logged In!",Toast.LENGTH_SHORT).show();
+            startActivity(i);
+        }
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -36,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void login(View v){
-        final Intent i=new Intent(LoginActivity.this,HomePage.class);
+        i=new Intent(LoginActivity.this,HomePage.class);
 
         EditText passwordET = (EditText) findViewById(R.id.txtPassword);
         EditText emailET = (EditText) findViewById(R.id.txtEmail);
@@ -51,10 +64,14 @@ public class LoginActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     if(jsonObject.getBoolean("error")){
                         Toast.makeText(LoginActivity.this,jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                        editor.putBoolean("isLoggedIn",false);
+                        editor.commit();
                     }
 
                     else{
-                        final Intent i=new Intent(LoginActivity.this,HomePage.class);
+                        Toast.makeText(LoginActivity.this,jsonObject.getString("email"),Toast.LENGTH_SHORT).show();
+                        editor.putBoolean("isLoggedIn",true);
+                        editor.commit();
                         startActivity(i);
                     }
 

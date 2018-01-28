@@ -42,7 +42,7 @@ public class LocationPicker  extends AppCompatActivity {
     int PLACE_PICKER_REQUEST=1;
     Button mapButton,btnSubmit;
     String Lplace,fullname,email,address,mobileno,password;
-    String url = "http://192.168.8.3:8000/api/register";
+    String url = "http://192.168.8.104:8000/api/register";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
