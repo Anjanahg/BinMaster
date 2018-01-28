@@ -1,5 +1,8 @@
 package com.example.anjana.binmaster.HomePage;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -16,7 +19,9 @@ import android.view.View;
 
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.anjana.binmaster.LoginActivity;
 import com.example.anjana.binmaster.R;
 
 public class HomePage extends AppCompatActivity {
@@ -25,6 +30,10 @@ public class HomePage extends AppCompatActivity {
     NavigationView navigationView;
     FragmentManager FM;
     FragmentTransaction FT;
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
+    Intent i;
+
 
 
 
@@ -34,6 +43,9 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         ActionBar actionBar = getSupportActionBar();
+
+        prefs=getSharedPreferences("MyPrefs",Context.MODE_PRIVATE);
+        editor=prefs.edit();
         actionBar.hide();
 
 
@@ -66,6 +78,13 @@ public class HomePage extends AppCompatActivity {
                 {
                     FragmentTransaction fragmentTransaction1=FM.beginTransaction();
                     fragmentTransaction1.replace(R.id.containerView,new TabFragment()).commit();
+
+                }
+                if (item.getItemId()==R.id.logout){
+                    editor.putBoolean("isLoggedIn",false);
+                    editor.commit();
+                    Intent intent=new Intent(HomePage.this, LoginActivity.class);
+                    startActivity(intent);
 
                 }
                 return false;

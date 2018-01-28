@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    String url="http://192.168.8.104:8000/api/login";
+    String url="http://192.168.8.100:8000/api/login";
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
     Intent i;
@@ -69,8 +69,9 @@ public class LoginActivity extends AppCompatActivity {
                     }
 
                     else{
-                        Toast.makeText(LoginActivity.this,jsonObject.getString("email"),Toast.LENGTH_SHORT).show();
+
                         editor.putBoolean("isLoggedIn",true);
+
                         editor.commit();
                         startActivity(i);
                     }

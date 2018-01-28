@@ -28,7 +28,8 @@
 
 
         <item android:title="Logout"
-            android:icon="@drawable/settings"/>
+            android:icon="@drawable/settings"
+            android:id="@+id/logout"/>
 
     </group>
 

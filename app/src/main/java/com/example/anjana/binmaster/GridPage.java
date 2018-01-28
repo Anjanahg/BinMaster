@@ -32,7 +32,7 @@ public class GridPage extends AppCompatActivity implements NumberPicker.OnValueC
     String v1,v2,v3,v4,v5,v6;
     static Dialog d ;
     String uId="18";
-    String url = "http://192.168.8.104:8000/api/send";
+    String url = "http://192.168.8.100:8000/api/send";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

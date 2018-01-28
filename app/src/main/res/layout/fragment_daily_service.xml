@@ -22,4 +22,12 @@
         app:backgroundTint="#FF0893D8"
         app:fabSize="normal"
         app:srcCompat="@drawable/floating_button_icon" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/datesLV"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        ></ListView>
 </RelativeLayout>
