@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.anjana.binmaster.GridPage;
 import com.example.anjana.binmaster.MySingleton;
 import com.example.anjana.binmaster.R;
+import com.example.anjana.binmaster.RegisterActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,9 +38,13 @@ import java.util.Map;
  */
 public class DailyService extends Fragment {
 
-    String url="http://192.168.8.100:8000/api/display";
-    String uId=new Integer(1).toString();
+    String url="http://192.168.8.101:8000/api/display";
+
+
+
+    String uId=;
     List<String> dates;
+    List<Integer> ids;
     ArrayAdapter<String> adapter;
     ListView requestList;
 
@@ -60,12 +66,14 @@ public class DailyService extends Fragment {
             @Override
             public void onResponse(String response) {
                 dates = new ArrayList<String>();
+                ids = new ArrayList<Integer>();
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     for(int i = 0;i<jsonArray.length();i++)
                     {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         dates.add(jsonObject.getString("requestedDate"));
+                        ids.add(jsonObject.getInt("id"));
                     }
                     adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_expandable_list_item_1,dates);
                     requestList.setAdapter(adapter);
@@ -108,6 +116,21 @@ public class DailyService extends Fragment {
                 }
             }
         });
+
+
+        requestList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int selectedId = (int)ids.get(position);
+                Intent intent = new Intent(getActivity(),ListItemDetails.class);
+                intent.putExtra("id",selectedId);
+                startActivity(intent);
+
+            }
+        });
+
+
+
         return  rootView;
     }
 

@@ -1,6 +1,8 @@
 package com.example.anjana.binmaster;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -43,12 +45,16 @@ public class LocationPicker  extends AppCompatActivity {
     Button mapButton,btnSubmit;
     String Lplace,fullname,email,address,mobileno,password;
     String url = "http://192.168.8.104:8000/api/register";
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_picker);
 
+        prefs=getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        editor=prefs.edit();
 
         btnSubmit=(Button)findViewById(R.id.btnSubmit);
         mapButton=(Button)findViewById(R.id.btnMap);
@@ -140,6 +146,8 @@ public class LocationPicker  extends AppCompatActivity {
                     else{
                         Intent i =new Intent(LocationPicker.this,RegSuccessPage.class);
                         startActivity(i);
+                        editor.putString("uId",jsonObject.getString("uId"));
+                        editor.commit();
                     }
 
                 } catch (JSONException e) {

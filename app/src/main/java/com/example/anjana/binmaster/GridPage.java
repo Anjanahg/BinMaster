@@ -3,6 +3,7 @@ package com.example.anjana.binmaster;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,12 +27,15 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class GridPage extends AppCompatActivity implements NumberPicker.OnValueChangeListener{
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
 
     private static TextView tv1,tv2,tv3,tv4,tv5,tv6;
     String v1,v2,v3,v4,v5,v6;
     static Dialog d ;
-    String uId="18";
+    String uId=prefs.getString("uId",null);
     String url = "http://192.168.8.100:8000/api/send";
 
     @Override
