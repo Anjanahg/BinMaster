@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    String url="http://192.168.8.100:8000/api/login";
+    String url="http://192.168.8.4:8000/api/login";
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
     Intent i;
@@ -63,14 +64,19 @@ public class LoginActivity extends AppCompatActivity {
 
                     JSONObject jsonObject = new JSONObject(response);
                     if(jsonObject.getBoolean("error")){
-                        Toast.makeText(LoginActivity.this,jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this,"Error!!!!!!!",Toast.LENGTH_LONG).show();
                         editor.putBoolean("isLoggedIn",false);
+
                         editor.commit();
                     }
 
                     else{
 
                         editor.putBoolean("isLoggedIn",true);
+                        String uId=""+jsonObject.getJSONObject("uId").getInt("id");
+                        Toast.makeText(LoginActivity.this,uId,Toast.LENGTH_LONG).show();
+                       // uId="1";
+                        editor.putString("uId",uId);
 
                         editor.commit();
                         startActivity(i);
@@ -84,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(LoginActivity.this,error.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG).show();
             }
         })
         {

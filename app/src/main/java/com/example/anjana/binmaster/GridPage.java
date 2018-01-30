@@ -1,6 +1,7 @@
 package com.example.anjana.binmaster;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -32,16 +33,20 @@ public class GridPage extends AppCompatActivity implements NumberPicker.OnValueC
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
 
-    private static TextView tv1,tv2,tv3,tv4,tv5,tv6;
+    TextView tv1,tv2,tv3,tv4,tv5,tv6;
     String v1,v2,v3,v4,v5,v6;
     static Dialog d ;
-    String uId=prefs.getString("uId",null);
-    String url = "http://192.168.8.100:8000/api/send";
+    String uId;
+    String url = "http://192.168.8.4:8000/api/send";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid_page);
+
+        prefs=getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        uId=prefs.getString("uId","");
+
 //--------------------------------------------------------------------------------------------------
         tv1 = (TextView) findViewById(R.id.textViewOrganic);//xml file item id
         Button b1 = (Button) findViewById(R.id.btnOrganic);
@@ -158,7 +163,7 @@ public class GridPage extends AppCompatActivity implements NumberPicker.OnValueC
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(GridPage.this,error.getMessage(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(GridPage.this,error.toString(),Toast.LENGTH_LONG).show();
                     }
                 })
                 {

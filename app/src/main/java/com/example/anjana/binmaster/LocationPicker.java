@@ -44,7 +44,7 @@ public class LocationPicker  extends AppCompatActivity {
     int PLACE_PICKER_REQUEST=1;
     Button mapButton,btnSubmit;
     String Lplace,fullname,email,address,mobileno,password;
-    String url = "http://192.168.8.104:8000/api/register";
+    String url = "http://192.168.8.4:8000/api/register";
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
 
@@ -144,10 +144,10 @@ public class LocationPicker  extends AppCompatActivity {
                         Toast.makeText(LocationPicker.this,"Please Select your Locations!",Toast.LENGTH_LONG).show();
                     }
                     else{
-                        Intent i =new Intent(LocationPicker.this,RegSuccessPage.class);
+                        Intent i =new Intent(LocationPicker.this,LoginActivity.class);
+
+
                         startActivity(i);
-                        editor.putString("uId",jsonObject.getString("uId"));
-                        editor.commit();
                     }
 
                 } catch (JSONException e) {

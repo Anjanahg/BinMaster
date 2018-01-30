@@ -1,7 +1,9 @@
 package com.example.anjana.binmaster.HomePage;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -19,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.anjana.binmaster.GridPage;
+import com.example.anjana.binmaster.LoginActivity;
 import com.example.anjana.binmaster.MySingleton;
 import com.example.anjana.binmaster.R;
 import com.example.anjana.binmaster.RegisterActivity;
@@ -38,16 +41,20 @@ import java.util.Map;
  */
 public class DailyService extends Fragment {
 
-    String url="http://192.168.8.101:8000/api/display";
 
 
 
-    String uId=;
+
+    String url="http://192.168.8.4:8000/api/display";
+
+    String uId;
+
     List<String> dates;
     List<Integer> ids;
     ArrayAdapter<String> adapter;
     ListView requestList;
-
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
 
     public DailyService() {
         // Required empty public constructor
@@ -56,8 +63,19 @@ public class DailyService extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+//
+
+
         // Inflate the layout for this fragment
         View rootView= inflater.inflate(R.layout.fragment_daily_service, container, false);
+
+
+        prefs = this.getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        uId=prefs.getString("uId","fuck");
+        Toast.makeText(getActivity(),uId,Toast.LENGTH_LONG).show();
+
+
 
 
         requestList = (ListView)rootView.findViewById(R.id.datesLV);

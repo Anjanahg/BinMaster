@@ -42,10 +42,12 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
+        prefs=getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        editor=prefs.edit();
+
         ActionBar actionBar = getSupportActionBar();
 
-        prefs=getSharedPreferences("MyPrefs",Context.MODE_PRIVATE);
-        editor=prefs.edit();
+
         actionBar.hide();
 
 

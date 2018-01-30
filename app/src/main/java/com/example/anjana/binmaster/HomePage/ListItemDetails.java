@@ -1,6 +1,8 @@
 package com.example.anjana.binmaster.HomePage;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -28,7 +30,10 @@ import java.util.Map;
 
 public class ListItemDetails extends AppCompatActivity {
 
-    String url="http://192.168.8.101:8000/api/itemClick";
+    String url="http://192.168.8.4:8000/api/itemClick";
+
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
 
 
 
@@ -36,6 +41,10 @@ public class ListItemDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_item_details);
+
+        prefs=getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        editor=prefs.edit();
+
 
         Bundle bundle = getIntent().getExtras();
         final int id = bundle.getInt("id");
